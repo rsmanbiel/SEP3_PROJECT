@@ -12,6 +12,7 @@ public class ViewModelFactory {
     private ProductDetailViewModel productDetailViewModel;
     private OrderListViewModel orderListViewModel;
     private OrderDetailViewModel orderDetailViewModel;
+    private ReportsViewModel reportsViewModel;
     
     public ViewModelFactory() {
         // ViewModels are created lazily
@@ -57,5 +58,12 @@ public class ViewModelFactory {
             orderDetailViewModel = new OrderDetailViewModel();
         }
         return orderDetailViewModel;
+    }
+    
+    public ReportsViewModel getReportsViewModel() {
+        if (reportsViewModel == null) {
+            reportsViewModel = new ReportsViewModel();
+        }
+        return reportsViewModel;
     }
 }

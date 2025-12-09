@@ -1,5 +1,7 @@
 package com.sep3.client.model;
 
+import java.time.LocalDateTime;
+
 /**
  * Model class representing a user.
  */
@@ -9,18 +11,18 @@ public class User {
     private String email;
     private String firstName;
     private String lastName;
-    private String role;
+    private String phone;
+    private String address;
+    private String city;
+    private String postalCode;
+    private String country;
+    private Long roleId;
+    private String roleName;
+    private Boolean isActive;
+    private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
     
     public User() {}
-    
-    public User(Long id, String username, String email, String firstName, String lastName, String role) {
-        this.id = id;
-        this.username = username;
-        this.email = email;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.role = role;
-    }
     
     // Getters and Setters
     public Long getId() { return id; }
@@ -38,10 +40,43 @@ public class User {
     public String getLastName() { return lastName; }
     public void setLastName(String lastName) { this.lastName = lastName; }
     
-    public String getRole() { return role; }
-    public void setRole(String role) { this.role = role; }
+    public String getPhone() { return phone; }
+    public void setPhone(String phone) { this.phone = phone; }
+    
+    public String getAddress() { return address; }
+    public void setAddress(String address) { this.address = address; }
+    
+    public String getCity() { return city; }
+    public void setCity(String city) { this.city = city; }
+    
+    public String getPostalCode() { return postalCode; }
+    public void setPostalCode(String postalCode) { this.postalCode = postalCode; }
+    
+    public String getCountry() { return country; }
+    public void setCountry(String country) { this.country = country; }
+    
+    public Long getRoleId() { return roleId; }
+    public void setRoleId(Long roleId) { this.roleId = roleId; }
+    
+    public String getRole() { return roleName; }
+    public String getRoleName() { return roleName; }
+    public void setRoleName(String roleName) { this.roleName = roleName; }
+    // This setter is used by Gson when deserializing from backend (which sends "role")
+    public void setRole(String role) { this.roleName = role; }
+    
+    public Boolean getIsActive() { return isActive; }
+    public void setIsActive(Boolean isActive) { this.isActive = isActive; }
+    
+    public LocalDateTime getCreatedAt() { return createdAt; }
+    public void setCreatedAt(LocalDateTime createdAt) { this.createdAt = createdAt; }
+    
+    public LocalDateTime getUpdatedAt() { return updatedAt; }
+    public void setUpdatedAt(LocalDateTime updatedAt) { this.updatedAt = updatedAt; }
     
     public String getFullName() {
+        if (firstName == null && lastName == null) return username;
+        if (firstName == null) return lastName;
+        if (lastName == null) return firstName;
         return firstName + " " + lastName;
     }
     
@@ -51,7 +86,7 @@ public class User {
                 "id=" + id +
                 ", username='" + username + '\'' +
                 ", email='" + email + '\'' +
-                ", role='" + role + '\'' +
+                ", role='" + roleName + '\'' +
                 '}';
     }
 }

@@ -45,9 +45,22 @@ public class AuthService {
                     this.refreshToken = response.getRefreshToken();
                     this.currentUser = response.getUser();
                     
+                    if (this.currentUser != null) {
+                        logger.info("Login successful for user: {} (role: {})", 
+                                this.currentUser.getUsername(), 
+                                this.currentUser.getRole());
+                        logger.debug("User details - id: {}, email: {}, firstName: {}, lastName: {}, roleName: {}", 
+                                this.currentUser.getId(),
+                                this.currentUser.getEmail(),
+                                this.currentUser.getFirstName(),
+                                this.currentUser.getLastName(),
+                                this.currentUser.getRoleName());
+                    } else {
+                        logger.error("Login response received but user is null!");
+                    }
+                    
                     httpClient.setAuthToken(accessToken);
                     
-                    logger.info("Login successful for user: {}", username);
                     return currentUser;
                 });
     }

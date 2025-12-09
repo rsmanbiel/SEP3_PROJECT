@@ -45,6 +45,8 @@
                     styleClass="nav-button" maxWidth="Infinity"/>
             <Button fx:id="reportsButton" text="📈 Reports" onAction="#showReports" 
                     styleClass="nav-button" maxWidth="Infinity"/>
+            <Button fx:id="usersButton" text="👥 Users" onAction="#showUsers" 
+                    styleClass="nav-button" maxWidth="Infinity"/>
             
             <Region VBox.vgrow="ALWAYS"/>
             

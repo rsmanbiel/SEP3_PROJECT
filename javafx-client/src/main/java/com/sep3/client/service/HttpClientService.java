@@ -3,9 +3,13 @@ package com.sep3.client.service;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.reflect.TypeToken;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import java.io.IOException;
+import java.lang.reflect.Type;
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
@@ -38,6 +42,35 @@ public class HttpClientService {
                 .registerTypeAdapter(LocalDateTime.class, (JsonDeserializer<LocalDateTime>)
                         (json, type, context) -> LocalDateTime.parse(json.getAsString(), 
                                 DateTimeFormatter.ISO_LOCAL_DATE_TIME))
+                .registerTypeAdapter(com.sep3.client.model.User.class, (JsonDeserializer<com.sep3.client.model.User>)
+                        (json, type, context) -> {
+                            JsonObject jsonObject = json.getAsJsonObject();
+                            com.sep3.client.model.User user = new com.sep3.client.model.User();
+                            
+                            if (jsonObject.has("id")) {
+                                user.setId(jsonObject.get("id").getAsLong());
+                            }
+                            if (jsonObject.has("username")) {
+                                user.setUsername(jsonObject.get("username").getAsString());
+                            }
+                            if (jsonObject.has("email")) {
+                                user.setEmail(jsonObject.get("email").getAsString());
+                            }
+                            if (jsonObject.has("firstName")) {
+                                user.setFirstName(jsonObject.get("firstName").getAsString());
+                            }
+                            if (jsonObject.has("lastName")) {
+                                user.setLastName(jsonObject.get("lastName").getAsString());
+                            }
+                            // Map "role" field to "roleName"
+                            if (jsonObject.has("role")) {
+                                user.setRole(jsonObject.get("role").getAsString());
+                            } else if (jsonObject.has("roleName")) {
+                                user.setRoleName(jsonObject.get("roleName").getAsString());
+                            }
+                            
+                            return user;
+                        })
                 .create();
     }
     
@@ -72,6 +105,17 @@ public class HttpClientService {
     }
     
     /**
+     * Perform GET request with Type (for generic types like PageResponse<T>).
+     */
+    public <T> CompletableFuture<T> get(String endpoint, Type responseType) {
+        HttpRequest request = buildRequest(endpoint)
+                .GET()
+                .build();
+        
+        return sendRequest(request, responseType);
+    }
+    
+    /**
      * Perform POST request.
      */
     public <T> CompletableFuture<T> post(String endpoint, Object body, Class<T> responseType) {
@@ -88,10 +132,30 @@ public class HttpClientService {
      * Perform PUT request.
      */
     public <T> CompletableFuture<T> put(String endpoint, Object body, Class<T> responseType) {
-        String jsonBody = gson.toJson(body);
+        String jsonBody = body != null ? gson.toJson(body) : "{}";
         
         HttpRequest request = buildRequest(endpoint)
                 .PUT(HttpRequest.BodyPublishers.ofString(jsonBody))
+                .header("Content-Type", "application/json")
+                .build();
+        
+        return sendRequest(request, responseType);
+    }
+    
+    /**
+     * Perform PATCH request.
+     */
+    public <T> CompletableFuture<T> patch(String endpoint, Object body, Class<T> responseType) {
+        String jsonBody;
+        if (body instanceof String) {
+            jsonBody = (String) body;
+        } else {
+            jsonBody = body != null ? gson.toJson(body) : "{}";
+        }
+        
+        HttpRequest request = buildRequest(endpoint)
+                .method("PATCH", HttpRequest.BodyPublishers.ofString(jsonBody))
+                .header("Content-Type", "application/json")
                 .build();
         
         return sendRequest(request, responseType);
@@ -128,6 +192,10 @@ public class HttpClientService {
     }
     
     private <T> CompletableFuture<T> sendRequest(HttpRequest request, Class<T> responseType) {
+        return sendRequest(request, (Type) responseType);
+    }
+    
+    private <T> CompletableFuture<T> sendRequest(HttpRequest request, Type responseType) {
         logger.debug("Sending {} request to: {}", request.method(), request.uri());
         
         return httpClient.sendAsync(request, HttpResponse.BodyHandlers.ofString())

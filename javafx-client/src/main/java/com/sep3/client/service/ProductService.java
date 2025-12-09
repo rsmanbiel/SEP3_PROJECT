@@ -3,6 +3,7 @@ package com.sep3.client.service;
 import com.sep3.client.model.Product;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import java.lang.reflect.Type;
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
@@ -31,14 +32,13 @@ public class ProductService {
     /**
      * Get all products.
      */
-    @SuppressWarnings("unchecked")
     public CompletableFuture<PageResponse<Product>> getAllProducts(int page, int size) {
         logger.debug("Fetching products - page: {}, size: {}", page, size);
         
         String endpoint = String.format("/products?page=%d&size=%d", page, size);
         
-        return httpClient.get(endpoint, PageResponse.class)
-                .thenApply(response -> (PageResponse<Product>) response);
+        Type type = new com.google.gson.reflect.TypeToken<PageResponse<Product>>(){}.getType();
+        return httpClient.get(endpoint, type);
     }
     
     /**
@@ -52,15 +52,14 @@ public class ProductService {
     /**
      * Search products.
      */
-    @SuppressWarnings("unchecked")
     public CompletableFuture<PageResponse<Product>> searchProducts(String query, int page, int size) {
         logger.debug("Searching products: {}", query);
         
         String endpoint = String.format("/products/search?query=%s&page=%d&size=%d", 
                 query, page, size);
         
-        return httpClient.get(endpoint, PageResponse.class)
-                .thenApply(response -> (PageResponse<Product>) response);
+        Type type = new com.google.gson.reflect.TypeToken<PageResponse<Product>>(){}.getType();
+        return httpClient.get(endpoint, type);
     }
     
     /**
@@ -95,7 +94,9 @@ public class ProductService {
      */
     public CompletableFuture<Product> updateStock(Long id, int quantityChange) {
         logger.info("Updating stock for product {}: {}", id, quantityChange);
-        return httpClient.get("/products/" + id + "/stock?quantityChange=" + quantityChange, Product.class);
+        // Backend uses @RequestParam, so we need to pass it as query parameter
+        String endpoint = "/products/" + id + "/stock?quantityChange=" + quantityChange;
+        return httpClient.patch(endpoint, "{}", Product.class);
     }
     
     /**

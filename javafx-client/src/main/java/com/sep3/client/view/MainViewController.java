@@ -26,6 +26,7 @@ public class MainViewController {
     @FXML private Button productsButton;
     @FXML private Button ordersButton;
     @FXML private Button reportsButton;
+    @FXML private Button usersButton;
     @FXML private Button logoutButton;
     @FXML private StackPane contentPane;
     
@@ -50,6 +51,8 @@ public class MainViewController {
         // Bind visibility based on permissions
         reportsButton.visibleProperty().bind(viewModel.canViewReportsProperty());
         reportsButton.managedProperty().bind(viewModel.canViewReportsProperty());
+        usersButton.visibleProperty().bind(viewModel.isAdminProperty());
+        usersButton.managedProperty().bind(viewModel.isAdminProperty());
         
         // Show dashboard by default
         showDashboard();
@@ -102,7 +105,37 @@ public class MainViewController {
     @FXML
     private void showReports() {
         logger.debug("Showing reports");
-        loadView("/fxml/ReportsView.fxml", "reports");
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/ReportsView.fxml"));
+            Parent view = loader.load();
+            
+            ReportsViewController controller = loader.getController();
+            controller.init(viewModelFactory.getReportsViewModel(), viewModelFactory);
+            
+            contentPane.getChildren().clear();
+            contentPane.getChildren().add(view);
+        } catch (IOException e) {
+            logger.error("Failed to load reports view", e);
+            showError("Failed to load reports view");
+        }
+    }
+    
+    @FXML
+    private void showUsers() {
+        logger.debug("Showing users");
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/UsersManagementView.fxml"));
+            Parent view = loader.load();
+            
+            UsersManagementViewController controller = loader.getController();
+            controller.init(viewModelFactory, viewHandler);
+            
+            contentPane.getChildren().clear();
+            contentPane.getChildren().add(view);
+        } catch (IOException e) {
+            logger.error("Failed to load users view", e);
+            showError("Failed to load users view");
+        }
     }
     
     @FXML

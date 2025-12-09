@@ -4,7 +4,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox xmlns:fx="http://javafx.com/fxml" spacing="15" styleClass="list-view">
+<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="com.sep3.client.view.ProductListViewController" spacing="15" styleClass="list-view">
     
     <!-- Header -->
     <HBox alignment="CENTER_LEFT" spacing="10">

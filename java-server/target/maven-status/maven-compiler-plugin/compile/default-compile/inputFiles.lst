@@ -1,3 +1,4 @@
+C:\Users\bypas\SEP3-Project\java-server\src\main\java\com\sep3\warehouse\dto\user\CreateUserRequest.java
 C:\Users\bypas\SEP3-Project\java-server\src\main\java\com\sep3\warehouse\controller\OrderController.java
 C:\Users\bypas\SEP3-Project\java-server\src\main\java\com\sep3\warehouse\exception\ResourceNotFoundException.java
 C:\Users\bypas\SEP3-Project\java-server\src\main\java\com\sep3\warehouse\entity\OrderItem.java
@@ -13,6 +14,7 @@ C:\Users\bypas\SEP3-Project\java-server\src\main\java\com\sep3\warehouse\service
 C:\Users\bypas\SEP3-Project\java-server\src\main\java\com\sep3\warehouse\entity\Role.java
 C:\Users\bypas\SEP3-Project\java-server\target\generated-sources\protobuf\java\com\sep3\warehouse\grpc\GetShipmentRequest.java
 C:\Users\bypas\SEP3-Project\java-server\src\main\java\com\sep3\warehouse\exception\InsufficientStockException.java
+C:\Users\bypas\SEP3-Project\java-server\src\main\java\com\sep3\warehouse\dto\user\UserDTO.java
 C:\Users\bypas\SEP3-Project\java-server\target\generated-sources\protobuf\java\com\sep3\warehouse\grpc\GetAllShipmentsRequestOrBuilder.java
 C:\Users\bypas\SEP3-Project\java-server\src\main\java\com\sep3\warehouse\dto\product\CreateProductRequest.java
 C:\Users\bypas\SEP3-Project\java-server\src\main\java\com\sep3\warehouse\config\security\CustomUserDetailsService.java
@@ -30,6 +32,7 @@ C:\Users\bypas\SEP3-Project\java-server\target\generated-sources\protobuf\java\c
 C:\Users\bypas\SEP3-Project\java-server\target\generated-sources\protobuf\java\com\sep3\warehouse\grpc\ShipmentStatus.java
 C:\Users\bypas\SEP3-Project\java-server\src\main\java\com\sep3\warehouse\dto\order\OrderItemDTO.java
 C:\Users\bypas\SEP3-Project\java-server\src\main\java\com\sep3\warehouse\dto\shipment\ShipmentHistoryDTO.java
+C:\Users\bypas\SEP3-Project\java-server\src\main\java\com\sep3\warehouse\service\UserService.java
 C:\Users\bypas\SEP3-Project\java-server\target\generated-sources\protobuf\java\com\sep3\warehouse\grpc\CancelShipmentRequest.java
 C:\Users\bypas\SEP3-Project\java-server\src\main\java\com\sep3\warehouse\config\security\JwtTokenProvider.java
 C:\Users\bypas\SEP3-Project\java-server\src\main\java\com\sep3\warehouse\dto\shipment\CreateShipmentRequest.java
@@ -37,11 +40,13 @@ C:\Users\bypas\SEP3-Project\java-server\src\main\java\com\sep3\warehouse\entity\
 C:\Users\bypas\SEP3-Project\java-server\src\main\java\com\sep3\warehouse\repository\UserRepository.java
 C:\Users\bypas\SEP3-Project\java-server\target\generated-sources\protobuf\java\com\sep3\warehouse\grpc\GetShipmentByOrderIdRequestOrBuilder.java
 C:\Users\bypas\SEP3-Project\java-server\target\generated-sources\protobuf\java\com\sep3\warehouse\grpc\ShipmentListResponseOrBuilder.java
+C:\Users\bypas\SEP3-Project\java-server\src\main\java\com\sep3\warehouse\dto\user\UpdateUserRequest.java
 C:\Users\bypas\SEP3-Project\java-server\src\main\java\com\sep3\warehouse\service\ProductService.java
 C:\Users\bypas\SEP3-Project\java-server\target\generated-sources\protobuf\java\com\sep3\warehouse\grpc\GetShipmentByOrderIdRequest.java
 C:\Users\bypas\SEP3-Project\java-server\src\main\java\com\sep3\warehouse\repository\InventoryTransactionRepository.java
 C:\Users\bypas\SEP3-Project\java-server\src\main\java\com\sep3\warehouse\repository\RoleRepository.java
 C:\Users\bypas\SEP3-Project\java-server\target\generated-sources\protobuf\java\com\sep3\warehouse\grpc\ShipmentHistoryEntryOrBuilder.java
+C:\Users\bypas\SEP3-Project\java-server\src\main\java\com\sep3\warehouse\controller\UserController.java
 C:\Users\bypas\SEP3-Project\java-server\src\main\java\com\sep3\warehouse\entity\Category.java
 C:\Users\bypas\SEP3-Project\java-server\target\generated-sources\protobuf\java\com\sep3\warehouse\grpc\ShipmentOrBuilder.java
 C:\Users\bypas\SEP3-Project\java-server\target\generated-sources\protobuf\java\com\sep3\warehouse\grpc\StreamShipmentRequest.java
@@ -72,5 +77,6 @@ C:\Users\bypas\SEP3-Project\java-server\src\main\java\com\sep3\warehouse\dto\ord
 C:\Users\bypas\SEP3-Project\java-server\target\generated-sources\protobuf\java\com\sep3\warehouse\grpc\CreateShipmentRequest.java
 C:\Users\bypas\SEP3-Project\java-server\target\generated-sources\protobuf\java\com\sep3\warehouse\grpc\ShipmentResponse.java
 C:\Users\bypas\SEP3-Project\java-server\src\main\java\com\sep3\warehouse\config\security\JwtAuthenticationFilter.java
+C:\Users\bypas\SEP3-Project\java-server\src\main\java\com\sep3\warehouse\util\GenerateCorrectHash.java
 C:\Users\bypas\SEP3-Project\java-server\target\generated-sources\protobuf\java\com\sep3\warehouse\grpc\ShipmentListResponse.java
 C:\Users\bypas\SEP3-Project\java-server\src\main\java\com\sep3\warehouse\entity\InventoryTransaction.java

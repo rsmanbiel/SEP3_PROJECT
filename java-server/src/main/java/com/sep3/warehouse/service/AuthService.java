@@ -41,10 +41,18 @@ public class AuthService {
     public LoginResponse login(LoginRequest request) {
         log.info("Login attempt for user: {}", request.getUsername());
         
+        String receivedPassword = request.getPassword();
+        if (receivedPassword == null) {
+            throw new BadRequestException("Password cannot be null");
+        }
+        
+        // Trim password to handle leading/trailing spaces
+        String passwordForAuth = receivedPassword.trim();
+        
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
                         request.getUsername(),
-                        request.getPassword()
+                        passwordForAuth
                 )
         );
         

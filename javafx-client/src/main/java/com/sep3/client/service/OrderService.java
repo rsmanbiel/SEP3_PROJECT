@@ -4,6 +4,7 @@ import com.sep3.client.model.Order;
 import com.sep3.client.model.OrderItem;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import java.lang.reflect.Type;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
@@ -31,13 +32,12 @@ public class OrderService {
     /**
      * Get all orders.
      */
-    @SuppressWarnings("unchecked")
     public CompletableFuture<ProductService.PageResponse<Order>> getAllOrders(int page, int size) {
         logger.debug("Fetching orders - page: {}, size: {}", page, size);
         
         String endpoint = String.format("/orders?page=%d&size=%d", page, size);
-        return httpClient.get(endpoint, ProductService.PageResponse.class)
-                .thenApply(response -> (ProductService.PageResponse<Order>) response);
+        Type type = new com.google.gson.reflect.TypeToken<ProductService.PageResponse<Order>>(){}.getType();
+        return httpClient.get(endpoint, type);
     }
     
     /**
@@ -51,25 +51,23 @@ public class OrderService {
     /**
      * Get orders by customer.
      */
-    @SuppressWarnings("unchecked")
     public CompletableFuture<ProductService.PageResponse<Order>> getOrdersByCustomer(Long customerId, int page, int size) {
         logger.debug("Fetching orders for customer: {}", customerId);
         
         String endpoint = String.format("/orders/customer/%d?page=%d&size=%d", customerId, page, size);
-        return httpClient.get(endpoint, ProductService.PageResponse.class)
-                .thenApply(response -> (ProductService.PageResponse<Order>) response);
+        Type type = new com.google.gson.reflect.TypeToken<ProductService.PageResponse<Order>>(){}.getType();
+        return httpClient.get(endpoint, type);
     }
     
     /**
      * Get orders by status.
      */
-    @SuppressWarnings("unchecked")
     public CompletableFuture<ProductService.PageResponse<Order>> getOrdersByStatus(String status, int page, int size) {
         logger.debug("Fetching orders with status: {}", status);
         
         String endpoint = String.format("/orders/status/%s?page=%d&size=%d", status, page, size);
-        return httpClient.get(endpoint, ProductService.PageResponse.class)
-                .thenApply(response -> (ProductService.PageResponse<Order>) response);
+        Type type = new com.google.gson.reflect.TypeToken<ProductService.PageResponse<Order>>(){}.getType();
+        return httpClient.get(endpoint, type);
     }
     
     /**

@@ -11,6 +11,7 @@ com\sep3\warehouse\grpc\ShipmentListResponse$Builder.class
 com\sep3\warehouse\service\AuthService.class
 com\sep3\warehouse\dto\auth\RegisterRequest.class
 com\sep3\warehouse\grpc\ShipmentServiceGrpc$ShipmentServiceFutureStub.class
+com\sep3\warehouse\controller\UserController.class
 com\sep3\warehouse\repository\OrderItemRepository.class
 com\sep3\warehouse\dto\product\CreateProductRequest.class
 com\sep3\warehouse\grpc\ShipmentServiceGrpc$ShipmentServiceBaseDescriptorSupplier.class
@@ -25,9 +26,11 @@ com\sep3\warehouse\config\security\JwtTokenProvider.class
 com\sep3\warehouse\repository\InventoryTransactionRepository.class
 com\sep3\warehouse\repository\OrderRepository.class
 com\sep3\warehouse\controller\AuthController.class
+com\sep3\warehouse\util\GenerateCorrectHash.class
 com\sep3\warehouse\grpc\GetAllShipmentsRequest.class
 com\sep3\warehouse\dto\order\OrderItemDTO.class
 com\sep3\warehouse\grpc\StreamShipmentRequestOrBuilder.class
+com\sep3\warehouse\dto\user\CreateUserRequest.class
 com\sep3\warehouse\grpc\CreateShipmentRequest$Builder.class
 com\sep3\warehouse\grpc\GetShipmentByOrderIdRequest$Builder.class
 com\sep3\warehouse\dto\order\OrderDTO$OrderDTOBuilder.class
@@ -91,8 +94,11 @@ com\sep3\warehouse\grpc\CancelShipmentRequest.class
 com\sep3\warehouse\grpc\ShipmentServiceGrpc$ShipmentServiceBlockingStub.class
 com\sep3\warehouse\grpc\ShipmentUpdateOrBuilder.class
 com\sep3\warehouse\grpc\ShipmentHistoryEntry$1.class
+com\sep3\warehouse\dto\user\UserDTO.class
 com\sep3\warehouse\grpc\GetShipmentRequest$Builder.class
 com\sep3\warehouse\dto\auth\LoginResponse$LoginResponseBuilder.class
+com\sep3\warehouse\dto\user\UpdateUserRequest.class
+com\sep3\warehouse\dto\user\UserDTO$UserDTOBuilder.class
 com\sep3\warehouse\grpc\UpdateShipmentStatusRequest$1.class
 com\sep3\warehouse\repository\ProductRepository.class
 com\sep3\warehouse\dto\shipment\CreateShipmentRequest$CreateShipmentRequestBuilder.class
@@ -104,6 +110,7 @@ com\sep3\warehouse\grpc\GetShipmentRequest$1.class
 com\sep3\warehouse\grpc\ShipmentServiceGrpc$3.class
 com\sep3\warehouse\entity\InventoryTransaction.class
 com\sep3\warehouse\grpc\ShipmentServiceGrpc$ShipmentServiceStub.class
+com\sep3\warehouse\service\UserService.class
 com\sep3\warehouse\grpc\ShipmentOrBuilder.class
 com\sep3\warehouse\dto\order\CreateOrderItemRequest.class
 com\sep3\warehouse\grpc\ShipmentListResponse$1.class

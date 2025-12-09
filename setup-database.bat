@@ -11,39 +11,60 @@ echo.
 set /p "PGPASSWORD=Enter PostgreSQL password: "
 
 echo.
-echo [1/4] Creating warehouse_db database...
+echo [1/5] Dropping existing databases (if they exist)...
+psql -U postgres -c "DROP DATABASE IF EXISTS warehouse_db;" 2>nul
+psql -U postgres -c "DROP DATABASE IF EXISTS shipment_db;" 2>nul
+echo       Existing databases dropped.
+
+echo [2/5] Creating warehouse_db database...
 psql -U postgres -c "CREATE DATABASE warehouse_db;" 2>nul
 if %errorlevel% equ 0 (
-    echo       Database warehouse_db created.
+    echo       Database warehouse_db created successfully.
 ) else (
-    echo       Database warehouse_db already exists or error occurred.
+    echo       ERROR: Failed to create warehouse_db database.
+    pause
+    exit /b 1
 )
 
-echo [2/4] Creating shipment_db database...
+echo [3/5] Creating shipment_db database...
 psql -U postgres -c "CREATE DATABASE shipment_db;" 2>nul
 if %errorlevel% equ 0 (
-    echo       Database shipment_db created.
+    echo       Database shipment_db created successfully.
 ) else (
-    echo       Database shipment_db already exists or error occurred.
+    echo       ERROR: Failed to create shipment_db database.
+    pause
+    exit /b 1
 )
 
-echo [3/4] Running schema.sql...
+echo [4/5] Running schema.sql...
 psql -U postgres -d warehouse_db -f "%~dp0database\schema.sql"
+if %errorlevel% neq 0 (
+    echo       ERROR: Failed to run schema.sql
+    pause
+    exit /b 1
+)
 
-echo [4/4] Running seed.sql...
+echo [5/5] Running seed.sql...
 psql -U postgres -d warehouse_db -f "%~dp0database\seed.sql"
+if %errorlevel% neq 0 (
+    echo       WARNING: Some seed data may have failed (duplicates are OK).
+)
 
 echo.
 echo ============================================
 echo Database setup complete!
 echo ============================================
 echo.
-echo Default users created:
-echo   admin / password123
-echo   supervisor1 / password123
-echo   operator1 / password123
-echo   customer1 / password123
+echo Default users created (all use password: password123):
+echo   - admin        (ADMIN role)
+echo   - supervisor1  (SUPERVISOR role)
+echo   - operator1    (WAREHOUSE_OPERATOR role)
+echo   - customer1    (CUSTOMER role)
 echo.
+
+pause
+pause
+
 pause
 
 

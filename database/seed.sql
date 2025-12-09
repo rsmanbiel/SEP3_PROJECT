@@ -11,25 +11,26 @@ INSERT INTO roles (name, description) VALUES
 ('CUSTOMER', 'View products, place orders, track shipments');
 
 -- =====================================================
--- USERS (Password: 'password123' hashed with BCrypt)
+-- USERS (All passwords: 'password123' - hashed with BCrypt strength 10)
+-- BCrypt hash verified for 'password123': $2a$10$VO32e6qZ5QIxJAsyfIOZQOSG83zC0guhi4i4mRhb5kZPA77PxhXQW
 -- =====================================================
 INSERT INTO users (username, email, password_hash, first_name, last_name, phone, address, city, postal_code, country, role_id) VALUES
 -- Admin
-('admin', 'admin@warehouse.com', '$2a$10$N9qo8uLOickgx2ZMRZoHK.ZmRZfM8EZQB0l8VLQYVkO0mNvGiX2Gy', 'System', 'Administrator', '+45 12345678', 'Admin Street 1', 'Horsens', '8700', 'Denmark', 1),
+('admin', 'admin@warehouse.com', '$2a$10$VO32e6qZ5QIxJAsyfIOZQOSG83zC0guhi4i4mRhb5kZPA77PxhXQW', 'System', 'Administrator', '+45 12345678', 'Admin Street 1', 'Horsens', '8700', 'Denmark', 1),
 
 -- Supervisors
-('supervisor1', 'supervisor1@warehouse.com', '$2a$10$N9qo8uLOickgx2ZMRZoHK.ZmRZfM8EZQB0l8VLQYVkO0mNvGiX2Gy', 'Lars', 'Nielsen', '+45 23456789', 'Supervisor Vej 10', 'Horsens', '8700', 'Denmark', 2),
-('supervisor2', 'supervisor2@warehouse.com', '$2a$10$N9qo8uLOickgx2ZMRZoHK.ZmRZfM8EZQB0l8VLQYVkO0mNvGiX2Gy', 'Maria', 'Hansen', '+45 34567890', 'Manager Alle 5', 'Aarhus', '8000', 'Denmark', 2),
+('supervisor1', 'supervisor1@warehouse.com', '$2a$10$VO32e6qZ5QIxJAsyfIOZQOSG83zC0guhi4i4mRhb5kZPA77PxhXQW', 'Lars', 'Nielsen', '+45 23456789', 'Supervisor Vej 10', 'Horsens', '8700', 'Denmark', 2),
+('supervisor2', 'supervisor2@warehouse.com', '$2a$10$VO32e6qZ5QIxJAsyfIOZQOSG83zC0guhi4i4mRhb5kZPA77PxhXQW', 'Maria', 'Hansen', '+45 34567890', 'Manager Alle 5', 'Aarhus', '8000', 'Denmark', 2),
 
 -- Warehouse Operators
-('operator1', 'operator1@warehouse.com', '$2a$10$N9qo8uLOickgx2ZMRZoHK.ZmRZfM8EZQB0l8VLQYVkO0mNvGiX2Gy', 'Peter', 'Jensen', '+45 45678901', 'Worker Gade 15', 'Horsens', '8700', 'Denmark', 3),
-('operator2', 'operator2@warehouse.com', '$2a$10$N9qo8uLOickgx2ZMRZoHK.ZmRZfM8EZQB0l8VLQYVkO0mNvGiX2Gy', 'Anna', 'Pedersen', '+45 56789012', 'Lager Vej 20', 'Horsens', '8700', 'Denmark', 3),
-('operator3', 'operator3@warehouse.com', '$2a$10$N9qo8uLOickgx2ZMRZoHK.ZmRZfM8EZQB0l8VLQYVkO0mNvGiX2Gy', 'Erik', 'Madsen', '+45 67890123', 'Industri Alle 8', 'Horsens', '8700', 'Denmark', 3),
+('operator1', 'operator1@warehouse.com', '$2a$10$VO32e6qZ5QIxJAsyfIOZQOSG83zC0guhi4i4mRhb5kZPA77PxhXQW', 'Peter', 'Jensen', '+45 45678901', 'Worker Gade 15', 'Horsens', '8700', 'Denmark', 3),
+('operator2', 'operator2@warehouse.com', '$2a$10$VO32e6qZ5QIxJAsyfIOZQOSG83zC0guhi4i4mRhb5kZPA77PxhXQW', 'Anna', 'Pedersen', '+45 56789012', 'Lager Vej 20', 'Horsens', '8700', 'Denmark', 3),
+('operator3', 'operator3@warehouse.com', '$2a$10$VO32e6qZ5QIxJAsyfIOZQOSG83zC0guhi4i4mRhb5kZPA77PxhXQW', 'Erik', 'Madsen', '+45 67890123', 'Industri Alle 8', 'Horsens', '8700', 'Denmark', 3),
 
 -- Customers
-('customer1', 'john.doe@email.com', '$2a$10$N9qo8uLOickgx2ZMRZoHK.ZmRZfM8EZQB0l8VLQYVkO0mNvGiX2Gy', 'John', 'Doe', '+45 78901234', 'Customer Street 1', 'Copenhagen', '1000', 'Denmark', 4),
-('customer2', 'jane.smith@email.com', '$2a$10$N9qo8uLOickgx2ZMRZoHK.ZmRZfM8EZQB0l8VLQYVkO0mNvGiX2Gy', 'Jane', 'Smith', '+45 89012345', 'Buyer Road 42', 'Odense', '5000', 'Denmark', 4),
-('customer3', 'bob.wilson@email.com', '$2a$10$N9qo8uLOickgx2ZMRZoHK.ZmRZfM8EZQB0l8VLQYVkO0mNvGiX2Gy', 'Bob', 'Wilson', '+45 90123456', 'Shopping Avenue 7', 'Aalborg', '9000', 'Denmark', 4);
+('customer1', 'john.doe@email.com', '$2a$10$VO32e6qZ5QIxJAsyfIOZQOSG83zC0guhi4i4mRhb5kZPA77PxhXQW', 'John', 'Doe', '+45 78901234', 'Customer Street 1', 'Copenhagen', '1000', 'Denmark', 4),
+('customer2', 'jane.smith@email.com', '$2a$10$VO32e6qZ5QIxJAsyfIOZQOSG83zC0guhi4i4mRhb5kZPA77PxhXQW', 'Jane', 'Smith', '+45 89012345', 'Buyer Road 42', 'Odense', '5000', 'Denmark', 4),
+('customer3', 'bob.wilson@email.com', '$2a$10$VO32e6qZ5QIxJAsyfIOZQOSG83zC0guhi4i4mRhb5kZPA77PxhXQW', 'Bob', 'Wilson', '+45 90123456', 'Shopping Avenue 7', 'Aalborg', '9000', 'Denmark', 4);
 
 -- =====================================================
 -- CATEGORIES
@@ -93,7 +94,42 @@ INSERT INTO products (sku, name, description, category_id, price, cost_price, qu
 ('OFFC-002', 'Pen Set Blue/Black', 'Set of 10 ballpoint pens', 9, 49.99, 15.00, 600, 100, 0.15, '15x8x2', 'E-01-02', '5901234523458'),
 ('OFFC-003', 'Desk Organizer', 'Multi-compartment desk organizer', 9, 129.99, 45.00, 120, 20, 0.65, '25x18x12', 'E-01-03', '5901234523459'),
 ('OFFC-004', 'Printer Paper A4 500 Sheets', 'High-quality A4 printer paper', 9, 89.99, 35.00, 250, 50, 2.50, '30x22x6', 'E-02-01', '5901234523460'),
-('OFFC-005', 'Whiteboard 90x60cm', 'Magnetic whiteboard with markers', 9, 349.99, 140.00, 30, 5, 3.20, '92x62x3', 'E-02-02', '5901234523461');
+('OFFC-005', 'Whiteboard 90x60cm', 'Magnetic whiteboard with markers', 9, 349.99, 140.00, 30, 5, 3.20, '92x62x3', 'E-02-02', '5901234523461'),
+
+-- More Electronics
+('ELEC-006', 'Smartphone 128GB', 'Latest smartphone with 6.5" display, triple camera', 11, 3999.99, 2500.00, 50, 10, 0.18, '16x8x0.8', 'A-03-01', '5901234123462'),
+('ELEC-007', 'Tablet 10" 64GB', '10-inch tablet with stylus support', 12, 2499.99, 1500.00, 75, 15, 0.48, '25x17x0.7', 'A-03-02', '5901234123463'),
+('ELEC-008', 'Smart Watch', 'Fitness tracker with heart rate monitor', 1, 1299.99, 600.00, 120, 20, 0.05, '4x4x1', 'A-03-03', '5901234123464'),
+('ELEC-009', 'Gaming Keyboard RGB', 'Mechanical gaming keyboard with RGB lighting', 1, 899.99, 400.00, 80, 15, 1.20, '45x15x3', 'A-04-01', '5901234123465'),
+('ELEC-010', 'Webcam HD 1080p', 'High-definition webcam for video calls', 1, 499.99, 200.00, 150, 25, 0.15, '10x5x5', 'A-04-02', '5901234123466'),
+
+-- More Clothing
+('CLTH-006', 'Leather Jacket', 'Genuine leather jacket, classic style', 14, 1999.99, 800.00, 40, 8, 1.50, '55x50x8', 'B-05-01', '5901234223462'),
+('CLTH-007', 'Wool Sweater', '100% wool sweater, warm and comfortable', 14, 599.99, 250.00, 100, 20, 0.45, '40x35x3', 'B-05-02', '5901234223463'),
+('CLTH-008', 'Baseball Cap', 'Adjustable baseball cap, various colors', 2, 199.99, 60.00, 200, 30, 0.10, '25x25x10', 'B-06-01', '5901234223464'),
+('CLTH-009', 'Winter Boots', 'Waterproof winter boots with insulation', 2, 899.99, 400.00, 60, 12, 1.80, '35x30x20', 'B-06-02', '5901234223465'),
+('CLTH-010', 'Dress Shirt Formal', 'Formal dress shirt, white and blue colors', 14, 399.99, 150.00, 150, 25, 0.30, '35x30x2', 'B-07-01', '5901234223466'),
+
+-- More Home & Garden
+('HOME-006', 'Coffee Maker', 'Programmable coffee maker, 12 cups', 3, 599.99, 250.00, 45, 10, 3.50, '30x25x35', 'C-04-01', '5901234323462'),
+('HOME-007', 'Vacuum Cleaner', 'Bagless vacuum cleaner with HEPA filter', 3, 1299.99, 600.00, 30, 8, 5.20, '40x30x30', 'C-04-02', '5901234323463'),
+('HOME-008', 'Air Purifier', 'HEPA air purifier for rooms up to 50m²', 3, 899.99, 400.00, 25, 5, 4.50, '35x35x60', 'C-05-01', '5901234323464'),
+('HOME-009', 'Kitchen Knife Set', 'Professional 8-piece knife set', 3, 699.99, 300.00, 50, 10, 2.10, '40x15x8', 'C-05-02', '5901234323465'),
+('HOME-010', 'Bed Sheets Set', 'Premium cotton bed sheets, queen size', 16, 399.99, 150.00, 80, 15, 1.20, '80x60x10', 'C-06-01', '5901234323466'),
+
+-- More Sports & Outdoors
+('SPRT-006', 'Bicycle Helmet', 'Safety certified bicycle helmet, adjustable', 4, 299.99, 120.00, 90, 15, 0.35, '30x25x20', 'D-04-01', '5901234423462'),
+('SPRT-007', 'Running Watch GPS', 'GPS running watch with heart rate monitor', 4, 1499.99, 700.00, 40, 8, 0.08, '5x4x1', 'D-04-02', '5901234423463'),
+('SPRT-008', 'Swimming Goggles', 'Anti-fog swimming goggles, UV protection', 4, 149.99, 50.00, 150, 25, 0.05, '15x8x5', 'D-05-01', '5901234423464'),
+('SPRT-009', 'Basketball', 'Official size basketball, indoor/outdoor', 4, 399.99, 150.00, 70, 12, 0.60, '25x25x25', 'D-05-02', '5901234423465'),
+('SPRT-010', 'Fitness Resistance Bands', 'Set of 5 resistance bands, various strengths', 4, 199.99, 80.00, 100, 20, 0.30, '30x20x5', 'D-06-01', '5901234423466'),
+
+-- More Office Supplies
+('OFFC-006', 'Stapler Heavy Duty', 'Heavy-duty stapler, 210 sheet capacity', 9, 149.99, 60.00, 120, 20, 0.55, '20x10x8', 'E-03-01', '5901234523462'),
+('OFFC-007', 'File Cabinet 2-Drawer', 'Metal file cabinet, letter size', 9, 1299.99, 600.00, 15, 3, 25.00, '50x40x70', 'E-03-02', '5901234523463'),
+('OFFC-008', 'Monitor Stand', 'Adjustable monitor stand with USB hub', 9, 299.99, 120.00, 60, 10, 2.50, '60x25x15', 'E-04-01', '5901234523464'),
+('OFFC-009', 'Document Shredder', 'Cross-cut shredder, 8 sheets capacity', 9, 799.99, 350.00, 20, 5, 5.50, '40x30x25', 'E-04-02', '5901234523465'),
+('OFFC-010', 'Label Maker', 'Electronic label maker with keyboard', 9, 499.99, 200.00, 45, 8, 0.80, '20x15x8', 'E-05-01', '5901234523466');
 
 -- =====================================================
 -- SAMPLE ORDERS
