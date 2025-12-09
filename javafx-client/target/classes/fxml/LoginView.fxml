@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml" 
+      fx:controller="com.sep3.client.view.LoginViewController"
+      alignment="CENTER" spacing="20" styleClass="login-container">
+    
+    <padding>
+        <Insets top="40" right="40" bottom="40" left="40"/>
+    </padding>
+    
+    <!-- Title -->
+    <VBox alignment="CENTER" spacing="5">
+        <Text text="🏭" styleClass="login-icon"/>
+        <Text text="Warehouse Management" styleClass="login-title"/>
+        <Text text="System" styleClass="login-subtitle"/>
+    </VBox>
+    
+    <!-- Login Form -->
+    <VBox fx:id="loginBox" spacing="15" maxWidth="300">
+        <VBox spacing="5">
+            <Label text="Username" styleClass="field-label"/>
+            <TextField fx:id="usernameField" promptText="Enter your username" styleClass="login-field"/>
+        </VBox>
+        
+        <VBox spacing="5">
+            <Label text="Password" styleClass="field-label"/>
+            <PasswordField fx:id="passwordField" promptText="Enter your password" styleClass="login-field"/>
+        </VBox>
+        
+        <!-- Error Message -->
+        <Label fx:id="errorLabel" styleClass="error-label" wrapText="true"/>
+        
+        <!-- Login Button -->
+        <Button fx:id="loginButton" text="Login" onAction="#handleLogin" 
+                styleClass="primary-button" maxWidth="Infinity"/>
+        
+        <!-- Loading Indicator -->
+        <HBox alignment="CENTER">
+            <ProgressIndicator fx:id="loadingIndicator" visible="false" maxHeight="30" maxWidth="30"/>
+        </HBox>
+    </VBox>
+    
+    <!-- Footer -->
+    <VBox alignment="CENTER" spacing="5">
+        <Separator/>
+        <Text text="SEP3 Project - VIA University College" styleClass="footer-text"/>
+    </VBox>
+</VBox>

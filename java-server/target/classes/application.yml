@@ -1,0 +1,73 @@
+spring:
+  application:
+    name: warehouse-server
+  
+  # Database Configuration
+  datasource:
+    url: jdbc:postgresql://localhost:5432/warehouse_db
+    username: postgres
+    password: 1
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      maximum-pool-size: 10
+      minimum-idle: 5
+      idle-timeout: 300000
+      connection-timeout: 20000
+  
+  # JPA Configuration
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+    open-in-view: false
+
+# Server Configuration
+server:
+  port: 8080
+  error:
+    include-message: always
+    include-binding-errors: always
+
+# JWT Configuration
+jwt:
+  secret: YourSuperSecretKeyForJWTTokenGenerationMustBeAtLeast256BitsLong
+  expiration: 86400000  # 24 hours in milliseconds
+  refresh-expiration: 604800000  # 7 days in milliseconds
+
+# gRPC Client Configuration (for C# Shipment Service)
+grpc:
+  client:
+    shipment-service:
+      host: localhost
+      port: 5001
+      use-tls: false
+
+# Logging Configuration
+logging:
+  level:
+    root: INFO
+    com.sep3.warehouse: DEBUG
+    org.springframework.security: INFO
+    org.hibernate.SQL: DEBUG
+    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+
+# OpenAPI Configuration
+springdoc:
+  api-docs:
+    path: /api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+    operationsSorter: method
+
+# CORS Configuration
+cors:
+  allowed-origins: http://localhost:3000,http://localhost:8081
+  allowed-methods: GET,POST,PUT,DELETE,OPTIONS
+  allowed-headers: "*"
+  allow-credentials: true

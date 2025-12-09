@@ -1,0 +1,141 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.sep3.warehouse.grpc";
+option java_outer_classname = "ShipmentProto";
+option csharp_namespace = "ShipmentService.Grpc";
+
+package shipment;
+
+// Shipment Service Definition
+service ShipmentService {
+  // Create a new shipment
+  rpc CreateShipment (CreateShipmentRequest) returns (ShipmentResponse);
+  
+  // Get shipment by ID
+  rpc GetShipment (GetShipmentRequest) returns (ShipmentResponse);
+  
+  // Get shipment by Order ID
+  rpc GetShipmentByOrderId (GetShipmentByOrderIdRequest) returns (ShipmentResponse);
+  
+  // Update shipment status
+  rpc UpdateShipmentStatus (UpdateShipmentStatusRequest) returns (ShipmentResponse);
+  
+  // Get all shipments
+  rpc GetAllShipments (GetAllShipmentsRequest) returns (ShipmentListResponse);
+  
+  // Stream shipment updates (real-time)
+  rpc StreamShipmentUpdates (StreamShipmentRequest) returns (stream ShipmentUpdate);
+  
+  // Cancel shipment
+  rpc CancelShipment (CancelShipmentRequest) returns (ShipmentResponse);
+}
+
+// Enums
+enum ShipmentStatus {
+  SHIPMENT_STATUS_UNSPECIFIED = 0;
+  PENDING = 1;
+  PROCESSING = 2;
+  SHIPPED = 3;
+  IN_TRANSIT = 4;
+  OUT_FOR_DELIVERY = 5;
+  DELIVERED = 6;
+  CANCELLED = 7;
+  RETURNED = 8;
+}
+
+// Request Messages
+message CreateShipmentRequest {
+  int64 order_id = 1;
+  string recipient_name = 2;
+  string recipient_address = 3;
+  string recipient_city = 4;
+  string recipient_postal_code = 5;
+  string recipient_country = 6;
+  string recipient_phone = 7;
+  double weight_kg = 8;
+  string notes = 9;
+}
+
+message GetShipmentRequest {
+  int64 shipment_id = 1;
+}
+
+message GetShipmentByOrderIdRequest {
+  int64 order_id = 1;
+}
+
+message UpdateShipmentStatusRequest {
+  int64 shipment_id = 1;
+  ShipmentStatus status = 2;
+  string location = 3;
+  string notes = 4;
+}
+
+message GetAllShipmentsRequest {
+  int32 page = 1;
+  int32 size = 2;
+  ShipmentStatus status_filter = 3;
+}
+
+message StreamShipmentRequest {
+  int64 shipment_id = 1;
+}
+
+message CancelShipmentRequest {
+  int64 shipment_id = 1;
+  string reason = 2;
+}
+
+// Response Messages
+message ShipmentResponse {
+  bool success = 1;
+  string message = 2;
+  Shipment shipment = 3;
+}
+
+message ShipmentListResponse {
+  bool success = 1;
+  string message = 2;
+  repeated Shipment shipments = 3;
+  int32 total_count = 4;
+  int32 page = 5;
+  int32 size = 6;
+}
+
+message ShipmentUpdate {
+  int64 shipment_id = 1;
+  ShipmentStatus status = 2;
+  string location = 3;
+  string timestamp = 4;
+  string notes = 5;
+}
+
+// Main Shipment Message
+message Shipment {
+  int64 id = 1;
+  int64 order_id = 2;
+  string tracking_number = 3;
+  ShipmentStatus status = 4;
+  string recipient_name = 5;
+  string recipient_address = 6;
+  string recipient_city = 7;
+  string recipient_postal_code = 8;
+  string recipient_country = 9;
+  string recipient_phone = 10;
+  double weight_kg = 11;
+  string current_location = 12;
+  string estimated_delivery = 13;
+  string created_at = 14;
+  string updated_at = 15;
+  string notes = 16;
+  repeated ShipmentHistoryEntry history = 17;
+}
+
+message ShipmentHistoryEntry {
+  int64 id = 1;
+  ShipmentStatus status = 2;
+  string location = 3;
+  string timestamp = 4;
+  string notes = 5;
+}

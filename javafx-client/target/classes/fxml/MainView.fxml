@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml" 
+            fx:id="mainPane"
+            fx:controller="com.sep3.client.view.MainViewController"
+            styleClass="main-container">
+    
+    <!-- Top Navigation Bar -->
+    <top>
+        <HBox styleClass="nav-bar" alignment="CENTER_LEFT" spacing="20">
+            <padding>
+                <Insets top="10" right="20" bottom="10" left="20"/>
+            </padding>
+            
+            <Text text="🏭 Warehouse Management" styleClass="nav-title"/>
+            
+            <Region HBox.hgrow="ALWAYS"/>
+            
+            <VBox alignment="CENTER_RIGHT" spacing="2">
+                <Label fx:id="userNameLabel" styleClass="user-name"/>
+                <Label fx:id="userRoleLabel" styleClass="user-role"/>
+            </VBox>
+            
+            <Button fx:id="logoutButton" text="Logout" onAction="#handleLogout" styleClass="logout-button"/>
+        </HBox>
+    </top>
+    
+    <!-- Left Sidebar -->
+    <left>
+        <VBox styleClass="sidebar" spacing="5" minWidth="200">
+            <padding>
+                <Insets top="20" right="10" bottom="20" left="10"/>
+            </padding>
+            
+            <Button fx:id="dashboardButton" text="📊 Dashboard" onAction="#showDashboard" 
+                    styleClass="nav-button" maxWidth="Infinity"/>
+            <Button fx:id="productsButton" text="📦 Products" onAction="#showProducts" 
+                    styleClass="nav-button" maxWidth="Infinity"/>
+            <Button fx:id="ordersButton" text="🛒 Orders" onAction="#showOrders" 
+                    styleClass="nav-button" maxWidth="Infinity"/>
+            <Button fx:id="reportsButton" text="📈 Reports" onAction="#showReports" 
+                    styleClass="nav-button" maxWidth="Infinity"/>
+            
+            <Region VBox.vgrow="ALWAYS"/>
+            
+            <Separator/>
+            <Text text="v1.0.0" styleClass="version-text"/>
+        </VBox>
+    </left>
+    
+    <!-- Center Content -->
+    <center>
+        <StackPane fx:id="contentPane" styleClass="content-pane">
+            <padding>
+                <Insets top="20" right="20" bottom="20" left="20"/>
+            </padding>
+        </StackPane>
+    </center>
+</BorderPane>

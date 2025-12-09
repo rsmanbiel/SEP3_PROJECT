@@ -1,0 +1,2 @@
+obj\Debug\net8.0/Shipment.cs \
+obj\Debug\net8.0/ShipmentGrpc.cs: ../../shared-protos/shipment.proto

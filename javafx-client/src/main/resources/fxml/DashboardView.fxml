@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml" spacing="20" styleClass="dashboard">
+    
+    <Label text="Dashboard" styleClass="view-title"/>
+    
+    <!-- Stats Cards -->
+    <HBox spacing="20">
+        <VBox styleClass="stat-card" HBox.hgrow="ALWAYS">
+            <Text text="📦" styleClass="stat-icon"/>
+            <Label text="Total Products" styleClass="stat-label"/>
+            <Label text="25" styleClass="stat-value"/>
+        </VBox>
+        
+        <VBox styleClass="stat-card" HBox.hgrow="ALWAYS">
+            <Text text="⚠️" styleClass="stat-icon"/>
+            <Label text="Low Stock" styleClass="stat-label"/>
+            <Label text="3" styleClass="stat-value-warning"/>
+        </VBox>
+        
+        <VBox styleClass="stat-card" HBox.hgrow="ALWAYS">
+            <Text text="🛒" styleClass="stat-icon"/>
+            <Label text="Pending Orders" styleClass="stat-label"/>
+            <Label text="12" styleClass="stat-value"/>
+        </VBox>
+        
+        <VBox styleClass="stat-card" HBox.hgrow="ALWAYS">
+            <Text text="🚚" styleClass="stat-icon"/>
+            <Label text="Shipments" styleClass="stat-label"/>
+            <Label text="5" styleClass="stat-value"/>
+        </VBox>
+    </HBox>
+    
+    <!-- Recent Activity -->
+    <VBox spacing="10" VBox.vgrow="ALWAYS">
+        <Label text="Recent Activity" styleClass="section-title"/>
+        <VBox styleClass="activity-list" VBox.vgrow="ALWAYS">
+            <Label text="• Order ORD-20241206-000001 created" styleClass="activity-item"/>
+            <Label text="• Product ELEC-001 stock updated" styleClass="activity-item"/>
+            <Label text="• Shipment SHP20241206... shipped" styleClass="activity-item"/>
+            <Label text="• Order ORD-20241205-000005 confirmed" styleClass="activity-item"/>
+            <Label text="• New user registered: customer3" styleClass="activity-item"/>
+        </VBox>
+    </VBox>
+    
+    <!-- Quick Actions -->
+    <HBox spacing="10">
+        <Label text="Quick Actions:" styleClass="section-title"/>
+        <Button text="New Order" styleClass="secondary-button"/>
+        <Button text="Add Product" styleClass="secondary-button"/>
+        <Button text="View Reports" styleClass="secondary-button"/>
+    </HBox>
+</VBox>
