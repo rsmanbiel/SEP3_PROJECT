@@ -170,11 +170,8 @@ mvn test
 
 ## 👨‍💻 Team
 
-- Team Member 1
-- Team Member 2
-- Team Member 3
-- Team Member 4
-
+- Matteo Saccucci 355400
+- Matteo Maria De Filippis
 ## 📄 License
 
 This project is developed for educational purposes as part of SEP3 at VIA University College.
